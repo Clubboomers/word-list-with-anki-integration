@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Vocab yet to learn</title>
+	<link rel="stylesheet" type="text/css" href="./styling/style.css">
+</head>
+<body>
+	<div id="container" style="display: none;">
+		<div id="hideOrShow">
+			<textarea readonly id="wordList"></textarea>
+			<button id="configure" onclick="startLoad()">Reconfigure</button>
+			<div id="interactDiv">
+				<div id="removeDiv">
+					<label>Remove word(s)</label>
+					<input type="text" name="remove" id="removeField" autocomplete="off">
+					<button onclick="removeWord()">Remove</button>
+					<br>
+					<br>
+					<button onclick="loadLocalStorage(blackList, 'blackListStorage')">Load</button>
+					<button onclick="saveLocalStorage(blackList, 'blackListStorage')">Save</button>
+					<button onclick="resetLocalStorage()">Reset</button>
+				</div>
+				<br>
+				<div id="searchDiv">
+					<label>Search for word</label>
+					<input type="text" name="search" id="searchField" autocomplete="off">
+					<button onclick="searchWord()">Search</button>
+					<br>
+					<textarea readonly id="searchResult"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="./scripts/dicWordList.js"></script>
+<script type="text/javascript" src="./scripts/termbank.js"></script>
+<script type="text/javascript" src="./scripts/n3WordList.js"></script>
+<script type="text/javascript" src="./scripts/script.js" defer></script>
+</body>
+</html>
