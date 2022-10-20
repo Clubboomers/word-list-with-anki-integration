@@ -1,6 +1,6 @@
-let URL = window.location.href;
+const URL = window.location.href;
 if(URL.charAt(URL.length-1) == '/') {
-  URL.slice(0,-1);
+  URL = URL.slice(0,-1);
 }
 
 function invoke(action, version, params = {}) {
