@@ -42,7 +42,7 @@ function invoke(action, version, params = {}) {
 
 function error_handle_function() {
   window.alert(
-    `Failed to connect to Anki. Make sure Anki is running in the background and has AnkiConnect installed. Ensure that "${window.location.href}" is in the webCorsOriginList in your AnkiConnects configuration`
+    `Failed to connect to Anki. Make sure Anki is running in the background and has AnkiConnect installed. Ensure that "${window.location.href.slice(0,-1)}" is in the webCorsOriginList in your AnkiConnects configuration`
   );
 }
 function successful_connection_function() {}
