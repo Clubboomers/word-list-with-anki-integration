@@ -1,4 +1,4 @@
-const URL = window.location.href;
+let URL = window.location.href;
 if(URL.charAt(URL.length-1) == '/') {
   URL = URL.slice(0,-1);
 }
