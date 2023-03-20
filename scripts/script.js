@@ -114,6 +114,10 @@ async function fooFunc() {
       console.log("Ordet finns redan. Skippar...");
     } else if (blackList.includes(learnWordList.at(i))) {
       console.log("Ordet är bannlyst");
+    } else if (checkIfKatakana(learnWordList[i])) {
+      console.log("Ordet är katakana. Skippar...");
+    } else if (checkIfHiragana(learnWordList[i])) {
+      console.log("Ordet är är irrelevant. Skippar...");
     } else {
       const frequency = findRow(learnWordList[i], frequencyList) + 1;
       learnWords.push({
@@ -159,6 +163,19 @@ function checkIfKatakana(str) {
   const regex = /[\u30A0-\u30FF]/g;
   return regex.test(str);
 }
+
+function checkIfHiragana(str) {
+  // Match the string against the hiragana character set
+  // (Unicode range: \u3040-\u309F)
+  // Also match the small tsu character (っ)
+  if(str.includes("っ")) {
+    return true;
+  } else {
+    const regex = /^[\u3040-\u309F]+$/g;
+    return regex.test(str);
+  }
+}
+
 
 async function init() {
   for (var i = 0; i < learnWordList.length; i++) {
