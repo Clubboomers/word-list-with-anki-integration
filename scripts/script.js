@@ -55,8 +55,8 @@ function successful_connection_function() {}
 let startDiv; // first div for form
 let nextDiv; // next step div
 let lastStepDiv; // final div for form
-let learnWordList = n3WordList; // n3WordList or dicWordList
-let frequencyList = obj; // dicFreq or obj
+let learnWordList = skyrimWordList; // n3WordList or dicWordList or skyrimWordList
+let frequencyList = skyrimFreq; // dicFreq or obj or skyrimFreq
 let ankiProfile = []; // information about users configuration
 let blackList = []; // words to not render in final list
 let knownWords = []; // words already in anki
@@ -153,6 +153,13 @@ async function wordExistsMining(learnWord) {
   });
 }
 
+function checkIfKatakana(str) {
+  // Match the string against the katakana character set
+  // (Unicode range: \u30A0-\u30FF)
+  const regex = /[\u30A0-\u30FF]/g;
+  return regex.test(str);
+}
+
 async function init() {
   for (var i = 0; i < learnWordList.length; i++) {
     // Om ordet i learnWordList på pos i redan finns i Anki
@@ -161,7 +168,9 @@ async function init() {
       console.log("Ord finns redan. Skippar...");
     } else if (blackList.includes(learnWordList[i])) {
       console.log("Ordet är bannlyst");
-    } else {
+    } else if (checkIfKatakana(learnWordList[i])) {
+      console.log("Ordet är katakana. Skippar...");
+    }else {
       console.log("Lägger till");
       learnWords.push(learnWordList[i]);
     }
@@ -170,6 +179,8 @@ async function init() {
 
   updateList();
 }
+
+
 
 function updateList() {
   document.getElementById("wordList").textContent = "";
