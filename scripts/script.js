@@ -204,7 +204,7 @@ function updateList() {
   // makes the list into a string with line breaks after every word
   let listFormat = "";
   for (var i = 0; i < learnWords.length; i++) {
-    listFormat += learnWords[i].word + "\n";
+    listFormat += learnWords[i].word + "\t" + "\t" + learnWords[i].frequency + "\n";
   }
   document.getElementById("wordList").textContent = listFormat;
   console.log(learnWords.length);
